@@ -210,8 +210,7 @@ You are required to complete the following three analysis tasks using Spark Stru
 **Objective:**
 
 Identify trending hashtags by analyzing their frequency of use across all posts.
-<<<<<<< HEAD
-=======
+
 **Code Explanation**
 Load the posts.csv dataset into a Spark DataFrame.
 
@@ -224,7 +223,7 @@ Group by hashtags and count their occurrences.
 Order by count (descending) and limit to the top 10 hashtags.
 
 Save the result to outputs/hashtag_trends.csv.
->>>>>>> 55ec801 (Prakathesh)
+
 
 **Tasks:**
 
@@ -253,8 +252,7 @@ Understand how users from different age groups engage with content based on like
 
 **Tasks:**
 
-<<<<<<< HEAD
-=======
+
 **Tasks:**
 
 >>>>>>> 55ec801 (Prakathesh)
@@ -262,8 +260,7 @@ Understand how users from different age groups engage with content based on like
 - **Group by AgeGroup**: Calculate average likes and retweets for each age group.
 - **Rank Groups**: Sort the results to highlight the most engaged age group.
 
-<<<<<<< HEAD
-=======
+
   **Code Explanation**
   Load posts.csv and users.csv as DataFrames.
 
@@ -273,7 +270,7 @@ Group by AgeGroup and calculate average likes and retweets using avg() aggregati
 
 Save the results to outputs/engagement_by_age.csv.
 
->>>>>>> 55ec801 (Prakathesh)
+
 **Expected Outcome:**  
 A summary of user engagement behavior categorized by age group.
 
@@ -297,8 +294,7 @@ Evaluate how sentiment (positive, neutral, or negative) influences post engageme
 - **Categorize Posts**: Group posts into Positive (`>0.3`), Neutral (`-0.3 to 0.3`), and Negative (`< -0.3`) sentiment groups.
 - **Analyze Engagement**: Calculate average likes and retweets per sentiment category.
 
-<<<<<<< HEAD
-=======
+
   **Code Explanation**
   Load the posts.csv dataset into a DataFrame.
 
@@ -316,7 +312,7 @@ Group by SentimentCategory and calculate the average likes and retweets.
 
 Save the result to outputs/sentiment_engagement.csv.
 
->>>>>>> 55ec801 (Prakathesh)
+
 **Expected Outcome:**  
 Insights into whether happier or angrier posts get more attention.
 
@@ -341,8 +337,7 @@ Find the most influential verified users based on their post reach (likes + retw
 - **Calculate Reach**: Sum likes and retweets for each user.
 - **Rank Users**: Return top 5 verified users with highest total reach.
 
-<<<<<<< HEAD
-=======
+
   **Code Explanation**
   Load the posts.csv dataset into a DataFrame.
 
@@ -360,7 +355,7 @@ Group by SentimentCategory and calculate the average likes and retweets.
 
 Save the result to outputs/sentiment_engagement.csv.
 
->>>>>>> 55ec801 (Prakathesh)
+
 **Expected Outcome:**  
 A leaderboard of verified users based on audience engagement.
 
@@ -372,31 +367,6 @@ A leaderboard of verified users based on audience engagement.
 | @designer_dan  | 1320        |
 
 ---
-
-<<<<<<< HEAD
-## **Grading Criteria**
-
-| Task                        | Marks |
-|-----------------------------|-------|
-| Hashtag Trend Analysis      | 1     |
-| Engagement by Age Group     | 1     |
-| Sentiment vs Engagement     | 1     |
-| Top Verified Users by Reach | 1     |
-| **Total**                   | **1** |
-=======
-
->>>>>>> 55ec801 (Prakathesh)
-
----
-
-## 📬 Submission Checklist
-
-- [ ] PySpark scripts in the `src/` directory  
-- [ ] Output files in the `outputs/` directory  
-- [ ] Datasets in the `input/` directory  
-- [ ] Completed `README.md`  
-- [ ] Commit everything to GitHub Classroom  
-- [ ] Submit your GitHub repo link on canvas
 
 ---
 
