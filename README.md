@@ -208,6 +208,18 @@ You are required to complete the following three analysis tasks using Spark Stru
 **Objective:**
 
 Identify trending hashtags by analyzing their frequency of use across all posts.
+**Code Explanation**
+Load the posts.csv dataset into a Spark DataFrame.
+
+Extract individual hashtags:
+
+Use explode() and split() to separate comma-separated hashtags into individual rows.
+
+Group by hashtags and count their occurrences.
+
+Order by count (descending) and limit to the top 10 hashtags.
+
+Save the result to outputs/hashtag_trends.csv.
 
 **Tasks:**
 
@@ -234,11 +246,21 @@ A ranked list of the most-used hashtags and their frequencies.
 **Objective:**  
 Understand how users from different age groups engage with content based on likes and retweets.
 
+
 **Tasks:**
 
 - **Join Datasets**: Combine `posts.csv` and `users.csv` using `UserID`.
 - **Group by AgeGroup**: Calculate average likes and retweets for each age group.
 - **Rank Groups**: Sort the results to highlight the most engaged age group.
+
+  **Code Explanation**
+  Load posts.csv and users.csv as DataFrames.
+
+Join both DataFrames on UserID.
+
+Group by AgeGroup and calculate average likes and retweets using avg() aggregation.
+
+Save the results to outputs/engagement_by_age.csv.
 
 **Expected Outcome:**  
 A summary of user engagement behavior categorized by age group.
@@ -263,6 +285,23 @@ Evaluate how sentiment (positive, neutral, or negative) influences post engageme
 - **Categorize Posts**: Group posts into Positive (`>0.3`), Neutral (`-0.3 to 0.3`), and Negative (`< -0.3`) sentiment groups.
 - **Analyze Engagement**: Calculate average likes and retweets per sentiment category.
 
+  **Code Explanation**
+  Load the posts.csv dataset into a DataFrame.
+
+Create sentiment categories:
+
+Negative (SentimentScore < 0)
+
+Neutral (SentimentScore == 0)
+
+Positive (SentimentScore > 0)
+
+Use when() and otherwise() to create a new column SentimentCategory.
+
+Group by SentimentCategory and calculate the average likes and retweets.
+
+Save the result to outputs/sentiment_engagement.csv.
+
 **Expected Outcome:**  
 Insights into whether happier or angrier posts get more attention.
 
@@ -286,6 +325,23 @@ Find the most influential verified users based on their post reach (likes + retw
 - **Filter Verified Users**: Use `Verified = True` from `users.csv`.
 - **Calculate Reach**: Sum likes and retweets for each user.
 - **Rank Users**: Return top 5 verified users with highest total reach.
+
+  **Code Explanation**
+  Load the posts.csv dataset into a DataFrame.
+
+Create sentiment categories:
+
+Negative (SentimentScore < 0)
+
+Neutral (SentimentScore == 0)
+
+Positive (SentimentScore > 0)
+
+Use when() and otherwise() to create a new column SentimentCategory.
+
+Group by SentimentCategory and calculate the average likes and retweets.
+
+Save the result to outputs/sentiment_engagement.csv.
 
 **Expected Outcome:**  
 A leaderboard of verified users based on audience engagement.
