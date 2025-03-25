@@ -8,10 +8,7 @@ os.makedirs("input", exist_ok=True)
 
 # Sample users
 user_data = []
-usernames = [
-    "@techie42", "@critic99", "@daily_vibes", "@designer_dan", "@rage_user",
-    "@meme_lord", "@social_queen", "@calm_mind", "@pixel_pusher", "@stream_bot"
-]
+usernames = [f"@user{i}" for i in range(1, 51)]  # Auto-generate 50 usernames
 age_groups = ["Teen", "Adult", "Senior"]
 countries = ["US", "UK", "Canada", "India", "Germany", "Brazil"]
 verified_status = [True, False]
@@ -50,8 +47,8 @@ contents = [
 posts_data = []
 base_time = datetime.now()
 
-for post_id in range(101, 201):
-    uid = random.randint(1, 10)
+for post_id in range(101, 201):  # 100 posts
+    uid = random.randint(1, 50)  # Match the number of users (1-50)
     timestamp = (base_time - timedelta(hours=random.randint(0, 240))).strftime("%Y-%m-%d %H:%M:%S")
     content = random.choice(contents)
     likes = random.randint(0, 150)

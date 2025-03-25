@@ -1,13 +1,33 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, sum as _sum
+from pyspark.sql.functions import col, sum as sum_
 
-spark = SparkSession.builder.appName("TopVerifiedUsers").getOrCreate()
+# Initialize Spark Session
+spark = SparkSession.builder.appName("Top Verified Users").getOrCreate()
 
-# Load datasets
-posts_df = spark.read.option("header", True).csv("input/posts.csv", inferSchema=True)
-users_df = spark.read.option("header", True).csv("input/users.csv", inferSchema=True)
+# ✅ Corrected Paths (no ../)
+posts = spark.read.csv("input/posts.csv", header=True, inferSchema=True)
+users = spark.read.csv("input/users.csv", header=True, inferSchema=True)
 
-# TODO: Implement the task here
+# ✅ Join posts and users on UserID
+joined_df = posts.join(users, on="UserID")
 
-# Save result
-top_verified.coalesce(1).write.mode("overwrite").csv("outputs/top_verified_users.csv", header=True)
+# ✅ Filter only Verified Users
+verified_df = joined_df.filter(col("Verified") == True)
+
+# ✅ Calculate Reach (Likes + Retweets)
+verified_df = verified_df.withColumn("Reach", col("Likes") + col("Retweets"))
+
+# ✅ Aggregate total reach per verified user
+top_verified_users = (
+    verified_df.groupBy("Username")
+    .agg(sum_("Reach").alias("TotalReach"))
+    .orderBy(col("TotalReach").desc())
+    .limit(5)
+)
+
+# ✅ Save the output
+top_verified_users.coalesce(1).write.mode("overwrite").csv("outputs/top_verified_users.csv", header=True)
+
+print("✅ Task 4 Completed: Top Verified Users by Reach saved in outputs/top_verified_users.csv")
+
+spark.stop()

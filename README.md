@@ -1,41 +1,44 @@
-# handson-08-sparkSQL-dataframes-social-media-sentiment-analysis
+**handson-08-sparkSQL-dataframes-social-media-sentiment-analysis**
+**Prerequisites**
+**Before starting the assignment, ensure you have the following software installed and properly configured on your machine:**
 
-## **Prerequisites**
+Python 3.x:
 
-Before starting the assignment, ensure you have the following software installed and properly configured on your machine:
+**Download and Install Python**
 
-1. **Python 3.x**:
-   - [Download and Install Python](https://www.python.org/downloads/)
-   - Verify installation:
-     ```bash
-     python3 --version
-     ```
+Verify installation:
 
-2. **PySpark**:
-   - Install using `pip`:
-     ```bash
-     pip install pyspark
-     ```
 
-3. **Apache Spark**:
-   - Ensure Spark is installed. You can download it from the [Apache Spark Downloads](https://spark.apache.org/downloads.html) page.
-   - Verify installation by running:
-     ```bash
-     spark-submit --version
-     ```
+python3 --version
+**PySpark:**
 
-4. **Docker & Docker Compose** (Optional):
-   - If you prefer using Docker for setting up Spark, ensure Docker and Docker Compose are installed.
-   - [Docker Installation Guide](https://docs.docker.com/get-docker/)
-   - [Docker Compose Installation Guide](https://docs.docker.com/compose/install/)
+Install using pip:
 
-## **Setup Instructions**
 
-### **1. Project Structure**
+pip install pyspark
+Apache Spark:
 
+Ensure Spark is installed. You can download it from the Apache Spark Downloads page.
+
+**Verify installation by running:**
+
+
+spark-submit --version
+**Docker & Docker Compose (Optional):**
+
+If you prefer using Docker for setting up Spark, ensure Docker and Docker Compose are installed.
+
+Docker Installation Guide
+
+Docker Compose Installation Guide
+
+Setup Instructions
+1. Project Structure
 Ensure your project directory follows the structure below:
 
-```
+css
+Copy
+Edit
 SocialMediaSentimentAnalysis/
 ├── input/
 │   ├── posts.csv
@@ -52,141 +55,100 @@ SocialMediaSentimentAnalysis/
 │   └── task4_top_verified_users.py
 ├── docker-compose.yml
 └── README.md
-```
 
+input/: Contains the input datasets (posts.csv and users.csv)
 
+outputs/: Directory where the results of each task will be saved.
 
-- **input/**: Contains the input datasets (`posts.csv` and `users.csv`)  
-- **outputs/**: Directory where the results of each task will be saved.
-- **src/**: Contains the individual Python scripts for each task.
-- **docker-compose.yml**: Docker Compose configuration file to set up Spark.
-- **README.md**: Assignment instructions and guidelines.
+src/: Contains the individual Python scripts for each task.
 
-### **2. Running the Analysis Tasks**
+docker-compose.yml: Docker Compose configuration file to set up Spark.
 
+README.md: Assignment instructions and guidelines.
+
+**2. Running the Analysis Tasks**
 You can run the analysis tasks either locally or using Docker.
 
-#### **a. Running Locally**
+a. Running Locally
+Navigate to the Project Directory:
 
-1. **Navigate to the Project Directory**:
-   ```bash
-   cd SocialMediaSentimentAnalysis/
-   ```
 
-2. **Execute Each Task Using `spark-submit`**:
-   ```bash
- 
-     spark-submit src/task1_hashtag_trends.py
-     spark-submit src/task2_engagement_by_age.py
-     spark-submit src/task3_sentiment_vs_engagement.py
-     spark-submit src/task4_top_verified_users.py
-     
-   ```
+cd SocialMediaSentimentAnalysis/
+**Execute Each Task Using spark-submit:**
 
-3. **Verify the Outputs**:
-   Check the `outputs/` directory for the resulting files:
-   ```bash
-   ls outputs/
-   ```
 
-#### **b. Running with Docker (Optional)**
+spark-submit src/task1_hashtag_trends.py
+spark-submit src/task2_engagement_by_age.py
+spark-submit src/task3_sentiment_vs_engagement.py
+spark-submit src/task4_top_verified_users.py
+**Verify the Outputs: Check the outputs/ directory for the resulting files:**
 
-1. **Start the Spark Cluster**:
-   ```bash
-   docker-compose up -d
-   ```
 
-2. **Access the Spark Master Container**:
-   ```bash
-   docker exec -it spark-master bash
-   ```
+ls outputs/
+**b. Running with Docker (Optional)**
+Start the Spark Cluster:
+docker-compose up -d
+**Access the Spark Master Container:**
 
-3. **Navigate to the Spark Directory**:
-   ```bash
-   cd /opt/bitnami/spark/
-   ```
+docker exec -it spark-master bash
+**Navigate to the Spark Directory:**
 
-4. **Run Your PySpark Scripts Using `spark-submit`**:
-   ```bash
-   
-   spark-submit src/task1_hashtag_trends.py
-   spark-submit src/task2_engagement_by_age.py
-   spark-submit src/task3_sentiment_vs_engagement.py
-   spark-submit src/task4_top_verified_users.py
-   ```
+cd /opt/bitnami/spark/
+**Run Your PySpark Scripts Using spark-submit:**
 
-5. **Exit the Container**:
-   ```bash
-   exit
-   ```
+spark-submit src/task1_hashtag_trends.py
+spark-submit src/task2_engagement_by_age.py
+spark-submit src/task3_sentiment_vs_engagement.py
+spark-submit src/task4_top_verified_users.py
+**Exit the Container:**
+exit
+**Verify the Outputs: On your host machine, check the outputs/ directory for the resulting files.**
 
-6. **Verify the Outputs**:
-   On your host machine, check the `outputs/` directory for the resulting files.
+Stop the Spark Cluster:
 
-7. **Stop the Spark Cluster**:
-   ```bash
-   docker-compose down
-   ```
+docker-compose down
+**Overview**
+In this assignment, you will leverage Spark Structured APIs to analyze social media datasets. Your goal is to extract meaningful insights related to hashtag trends, engagement by age group, sentiment influence, and top verified users. This exercise is designed to enhance your data manipulation and analytical skills using Spark's powerful APIs.
 
-## **Overview**
-
-In this assignment, you will leverage Spark Structured APIs to analyze a dataset containing employee information from various departments within an organization. Your goal is to extract meaningful insights related to employee satisfaction, engagement, concerns, and job titles. This exercise is designed to enhance your data manipulation and analytical skills using Spark's powerful APIs.
-
-## **Objectives**
-
+**Objectives**
 By the end of this assignment, you should be able to:
 
-1. **Data Loading and Preparation**: Import and preprocess data using Spark Structured APIs.
-2. **Data Analysis**: Perform complex queries and transformations to address specific business questions.
-3. **Insight Generation**: Derive actionable insights from the analyzed data.
+Data Loading and Preparation: Import and preprocess data using Spark Structured APIs.
 
-## **Dataset**
+Data Analysis: Perform complex queries and transformations to address specific business questions.
 
-## **Dataset: posts.csv **
+Insight Generation: Derive actionable insights from the analyzed data.
 
-You will work with a dataset containing information about **100+ users** who rated movies across various streaming platforms. The dataset includes the following columns:
+**Dataset**
+Dataset: posts.csv
+Column Name	Type	Description
+PostID	Integer	Unique ID for the post
+UserID	Integer	ID of the user who posted
+Content	String	Text content of the post
+Timestamp	String	Date and time the post was made
+Likes	Integer	Number of likes on the post
+Retweets	Integer	Number of shares/retweets
+Hashtags	String	Comma-separated hashtags used in the post
+SentimentScore	Float	Sentiment score (-1 to 1, where -1 is most negative)
+Dataset: users.csv
+Column Name	Type	Description
+UserID	Integer	Unique user ID
+Username	String	User's handle
+AgeGroup	String	Age category (Teen, Adult, Senior)
+Country	String	Country of residence
+Verified	Boolean	Whether the account is verified
+**Sample Data**
+posts.csv
 
-| Column Name     | Type    | Description                                           |
-|-----------------|---------|-------------------------------------------------------|
-| PostID          | Integer | Unique ID for the post                                |
-| UserID          | Integer | ID of the user who posted                             |
-| Content         | String  | Text content of the post                              |
-| Timestamp       | String  | Date and time the post was made                       |
-| Likes           | Integer | Number of likes on the post                           |
-| Retweets        | Integer | Number of shares/retweets                             |
-| Hashtags        | String  | Comma-separated hashtags used in the post             |
-| SentimentScore  | Float   | Sentiment score (-1 to 1, where -1 is most negative)  |
-
-
----
-
-## **Dataset: users.csv **
-| Column Name | Type    | Description                          |
-|-------------|---------|--------------------------------------|
-| UserID      | Integer | Unique user ID                       |
-| Username    | String  | User's handle                        |
-| AgeGroup    | String  | Age category (Teen, Adult, Senior)   |
-| Country     | String  | Country of residence                 |
-| Verified    | Boolean | Whether the account is verified      |
-
----
-
-### **Sample Data**
-
-Below is a snippet of the `posts.csv`,`users.csv` to illustrate the data structure. Ensure your dataset contains at least 100 records for meaningful analysis.
-
-```
 PostID,UserID,Content,Timestamp,Likes,Retweets,Hashtags,SentimentScore
 101,1,"Loving the new update! #tech #innovation","2023-10-05 14:20:00",120,45,"#tech,#innovation",0.8
 102,2,"This app keeps crashing. Frustrating! #fail","2023-10-05 15:00:00",5,1,"#fail",-0.7
 103,3,"Just another day... #mood","2023-10-05 16:30:00",15,3,"#mood",0.0
 104,4,"Absolutely love the UX! #design #cleanUI","2023-10-06 09:10:00",75,20,"#design,#cleanUI",0.6
 105,5,"Worst experience ever. Fix it. #bug","2023-10-06 10:45:00",2,0,"#bug",-0.9
-```
 
----
+users.csv
 
-```
 UserID,Username,AgeGroup,Country,Verified
 1,@techie42,Adult,US,True
 2,@critic99,Senior,UK,False
@@ -208,18 +170,6 @@ You are required to complete the following three analysis tasks using Spark Stru
 **Objective:**
 
 Identify trending hashtags by analyzing their frequency of use across all posts.
-**Code Explanation**
-Load the posts.csv dataset into a Spark DataFrame.
-
-Extract individual hashtags:
-
-Use explode() and split() to separate comma-separated hashtags into individual rows.
-
-Group by hashtags and count their occurrences.
-
-Order by count (descending) and limit to the top 10 hashtags.
-
-Save the result to outputs/hashtag_trends.csv.
 
 **Tasks:**
 
@@ -246,21 +196,11 @@ A ranked list of the most-used hashtags and their frequencies.
 **Objective:**  
 Understand how users from different age groups engage with content based on likes and retweets.
 
-
 **Tasks:**
 
 - **Join Datasets**: Combine `posts.csv` and `users.csv` using `UserID`.
 - **Group by AgeGroup**: Calculate average likes and retweets for each age group.
 - **Rank Groups**: Sort the results to highlight the most engaged age group.
-
-  **Code Explanation**
-  Load posts.csv and users.csv as DataFrames.
-
-Join both DataFrames on UserID.
-
-Group by AgeGroup and calculate average likes and retweets using avg() aggregation.
-
-Save the results to outputs/engagement_by_age.csv.
 
 **Expected Outcome:**  
 A summary of user engagement behavior categorized by age group.
@@ -285,23 +225,6 @@ Evaluate how sentiment (positive, neutral, or negative) influences post engageme
 - **Categorize Posts**: Group posts into Positive (`>0.3`), Neutral (`-0.3 to 0.3`), and Negative (`< -0.3`) sentiment groups.
 - **Analyze Engagement**: Calculate average likes and retweets per sentiment category.
 
-  **Code Explanation**
-  Load the posts.csv dataset into a DataFrame.
-
-Create sentiment categories:
-
-Negative (SentimentScore < 0)
-
-Neutral (SentimentScore == 0)
-
-Positive (SentimentScore > 0)
-
-Use when() and otherwise() to create a new column SentimentCategory.
-
-Group by SentimentCategory and calculate the average likes and retweets.
-
-Save the result to outputs/sentiment_engagement.csv.
-
 **Expected Outcome:**  
 Insights into whether happier or angrier posts get more attention.
 
@@ -325,23 +248,6 @@ Find the most influential verified users based on their post reach (likes + retw
 - **Filter Verified Users**: Use `Verified = True` from `users.csv`.
 - **Calculate Reach**: Sum likes and retweets for each user.
 - **Rank Users**: Return top 5 verified users with highest total reach.
-
-  **Code Explanation**
-  Load the posts.csv dataset into a DataFrame.
-
-Create sentiment categories:
-
-Negative (SentimentScore < 0)
-
-Neutral (SentimentScore == 0)
-
-Positive (SentimentScore > 0)
-
-Use when() and otherwise() to create a new column SentimentCategory.
-
-Group by SentimentCategory and calculate the average likes and retweets.
-
-Save the result to outputs/sentiment_engagement.csv.
 
 **Expected Outcome:**  
 A leaderboard of verified users based on audience engagement.
